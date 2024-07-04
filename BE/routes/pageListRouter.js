@@ -23,7 +23,7 @@ pagesListRouter.post("/api/newPage", async (req, res) => {
                 children: [],
             }],
             parent_id: parentId !== null ? parentId : null,
-            category: "page" // 여기서 카테고리 설정
+            category: "page"
         });
         await newPage.save();
         res.status(201).send(newPage);
