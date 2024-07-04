@@ -94,7 +94,7 @@ TemplatesRouter.post(
                     children: [],
                 }],
                 parent_id: null,
-                category: "template" // 여기서 카테고리 설정
+                category: "template"
             });
             await newPage.save();
 
@@ -123,5 +123,26 @@ TemplatesRouter.post(
         }
     }
 );
+
+TemplatesRouter.patch("/api/template/update/columns/:id", async (req, res) => {
+    const { id } = req.params;
+    const { columns } = req.body;
+
+    try {
+        const article = await TemplatesSchema.findById(id);
+
+        if (!article) {
+            return res.status(404).json({ error: "Article not found" });
+        }
+
+        article.columns = [...columns];
+        await article.save();
+
+        res.json({ message: "columns updated successfully", article });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 
 export default TemplatesRouter;

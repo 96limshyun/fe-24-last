@@ -6,7 +6,6 @@ import {
     Draggable,
     DropResult,
 } from "@hello-pangea/dnd";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import NewPageBtn from "../NewPageBtn/NewPageBtn";
